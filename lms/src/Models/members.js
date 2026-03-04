@@ -1,30 +1,30 @@
-import {User} from './User';
+import { User } from "./User.js";
 
-export class  Members extends User{
- constructor(name,email){
-super(name,email);
+const borrowedMap = new WeakMap();
 
- }
+export class Member extends User {
+     constructor(name, email) {
+        super(name, email);
+        const borrowedFromStorage = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
+        borrowedMap.set(this, borrowedFromStorage);
+    }
 
-borrowBook(book){    //provided a book is passed to this borrow-book function then the memeber will be able to boroow a book
+    borrowBook(book) {
+        const borrowed = borrowedMap.get(this);
+        borrowed.push(book);
+        book.isAvailable = false;
+        localStorage.setItem('borrowedBooks', JSON.stringify(borrowed));
+    }
 
+    returnBook(bookId) {
+      // TODO: Implement This. It is your task.
+    }
+
+    getBorrowedBooks() {
+        return borrowedMap.get(this);
+    }
+
+    getRole() {
+        return 'Member';
+    }
 }
-
-
-returnBook(bookid){
-}
-
-    
-
-
-
-
-
-
-getRole(){
-    return'Member'
-}
-
-}
-
-

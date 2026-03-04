@@ -16,15 +16,31 @@ let currentUser = new Member("John Doe", "john@email.com");
 
 const library = new LibrarySystem();
 
-userSwitcher.addEventListener("change", (e) => {
+userSwitcher.addEventListener("change", (e) => {  //so now depending on what the drop down wll tend to select  i am going to create a new object and this is polymorphism in action cc
     const selected = e.target.value;
     currentUser =
         selected === "admin"
-            ? new Admin("Alice", "alice@email.com")
-            : new Member("John Doe", "john@email.com");
+            ? new Admin("Alice", "alice@email.com")   //so if it is am admin we are going  now to create this admin instance 
+            : new Member("John Doe", "john@email.com");  //so here admin is a class and also member is a class and they are  both inheriting from a parent called user 
+
+// if (selected === "admin") {
+//     currentUser = new Admin("Alice", "alice@email.com");
+// } else {
+//     currentUser = new Member("John Doe", "john@email.com");
+// }
+
+
 
     bookSection.style.display = selected === "admin" ? "block" : "none";
     borrowedSection.style.display = selected === "member" ? "block" : "none";
+
+// if (selected === "admin") {
+//    bookSection.style.display = "block";
+// } else {
+//    bookSection.style.display = "none";
+// }
+
+
 
     renderBooks();
     renderBorrowed();
