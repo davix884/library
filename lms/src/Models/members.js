@@ -12,7 +12,7 @@ export class Member extends User {
     borrowBook(book) {
         const borrowed = borrowedMap.get(this);
         borrowed.push(book);
-        book.isAvailable = false;
+        book.isAvailable = false;s
         localStorage.setItem('borrowedBooks', JSON.stringify(borrowed));
     }
 

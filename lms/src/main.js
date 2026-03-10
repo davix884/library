@@ -1,6 +1,6 @@
 import { Admin } from "./models/Admin.js";
 import { Member } from "./models/Member.js";
-import { Book } from "./models/Book.js";
+import { Book } from "./models/Book.js";  //I am importing book then down there i am going to create an instance of the book
 import { LibrarySystem } from "./services/LibraryService.js";
 
 const userSwitcher = document.getElementById("userSwitcher");
@@ -47,9 +47,9 @@ userSwitcher.addEventListener("change", (e) => {  //so now depending on what the
 });
 
 bookForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+    e.preventDefault();    //to prevent the page from reloading 
 
-    const title = document.getElementById("title").value;
+    const title = document.getElementById("title").value; //i am taking what the user will type in  the title input box and store it in variable 'title"
     const author = document.getElementById("author").value;
     const genre = document.getElementById("genre").value;
     const book = new Book(title, author, genre);
