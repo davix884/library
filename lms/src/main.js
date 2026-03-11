@@ -54,14 +54,14 @@ bookForm.addEventListener("submit", (e) => {
     const genre = document.getElementById("genre").value;
     const book = new Book(title, author, genre);
 
-    library.addBook(book);
+    library.addBook(book);   //I am now calling the method and passing the book for me to add new book
 
-    renderBooks();
+    renderBooks();   //I am using this function to display a list of books on the screen 
 
     bookForm.reset();
 });
 
-function renderBooks() {
+function renderBooks() {   //Everytime this function runs it is going to do the following ;clear the list ,get all books ,loop through each book,create li element ,add styles,decide controls ,insert book details ,append to the page  
     bookList.innerHTML = "";
     library.getAllBooks().forEach((book) => {
         const li = document.createElement("li");
